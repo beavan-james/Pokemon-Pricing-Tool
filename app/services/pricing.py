@@ -3,11 +3,12 @@
 def calculate_market_price(soldlistings, fee = 1):
    if not soldlistings:
          return 0.0
-   soldlistings.sort() # sort() is in-place, do not assign it to the variable
-   min = soldlistings[0]
-   max = soldlistings[-1]
-   avg = sum(soldlistings) / len(soldlistings)
-   median = soldlistings[len(soldlistings)//2]
+   prices = [item["price"] for item in soldlistings]
+   prices.sort()
+   min = prices[0]
+   max = prices[-1]
+   avg = sum(prices) / len(prices)
+   median = prices[len(prices)//2]
    price=0
    trend = "Stable" # Default value
    if median > avg:
